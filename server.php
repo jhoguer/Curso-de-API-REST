@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 if (!array_key_exists( 'HTTP_X_TOKEN', $_SERVER ) ){
     die;
 }
@@ -23,7 +23,13 @@ curl_setopt(
 
 $ret = curl_exec( $ch );
 
-if ( $ret === 'true' )
+if ( $ret === 'true' ){
+    http_response_code( 403 );
+
+	die;
+}
+
+*/
 // Definimos los recursos disponibles
 $allowedResourcetypes = [
     'books',
