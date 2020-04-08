@@ -35,6 +35,7 @@ $allowedResourcetypes = [
 $resourceType = $_GET['resource_type'];
 
 if(!in_array($resourceType, $allowedResourcetypes)) {
+    http_response_code( 400 );
     die;
 }
 
@@ -70,6 +71,8 @@ switch (strtoupper($_SERVER['REQUEST_METHOD'])) {
         } else {
             if (array_key_exists( $resourceId, $books ) ) {
                 echo json_encode( $books[ $resourceId ] );
+            } else {
+                http_response_code( 404 );
             }
         }
         //echo json_encode($books);
